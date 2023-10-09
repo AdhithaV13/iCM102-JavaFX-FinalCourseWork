@@ -1,0 +1,15 @@
+<---------------------Use case diagram--------------------->
+https://app.diagrams.net/#G1OOpMF6Z3zgBejG-GouB9beXztVmt0vh0
+<---------------------------------------------------------->
+
+
+
+<------------------------------Prototype Design------------------------------>
+https://www.figma.com/file/6n9qm8v4gDOkR11shWAjk6/JAVAFX-Coursework-Prototype-Design?type=design&node-id=6%3A58&mode=design&t=DDIw7fYlBHpENkrv-1
+<---------------------------------------------------------------------------->
+
+
+
+<-----------------------------------ER Diagram----------------------------------->
+https://drive.google.com/file/d/10A1UZtVTvwD4fXqhO8Yg2_DjSiRMjfAn/view?usp=sharing
+<-------------------------------------------------------------------------------->
