@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -37,6 +38,14 @@ public class SignInController {
 
         boolean validationPassword = validationPassword(password, reEnteredPassword);
         boolean validationEmail = validationEmail(email);
+
+        if(validationEmail == true && validationPassword == true){
+            new Alert(Alert.AlertType.INFORMATION,"Successfully signed in..!").show();
+        }else if(validationEmail == false){
+            new Alert(Alert.AlertType.INFORMATION,"Enter valid email..!").show();
+        } else if (validationPassword == false) {
+            new Alert(Alert.AlertType.INFORMATION,"Check your both passwords..!").show();
+        }
     }
 
     public boolean validationPassword(String password, String reEnteredPassword){
