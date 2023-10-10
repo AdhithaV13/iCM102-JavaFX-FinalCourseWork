@@ -37,31 +37,31 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="15.0" layoutY="38.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtUsername" layoutX="15.0" layoutY="38.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
             <Line endX="167.0" endY="-1.52587890625E-5" layoutX="115.0" layoutY="63.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <TextField layoutX="13.0" layoutY="99.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtPassword" layoutX="13.0" layoutY="99.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
             <Line endX="167.0" endY="-1.52587890625E-5" layoutX="113.0" layoutY="124.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <TextField layoutX="15.0" layoutY="157.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtRePassword" layoutX="15.0" layoutY="157.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
             <Line endX="167.0" endY="-1.52587890625E-5" layoutX="115.0" layoutY="182.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <TextField layoutX="12.0" layoutY="213.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtEmail" layoutX="12.0" layoutY="213.0" prefHeight="25.0" prefWidth="267.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
             <Line endX="167.0" endY="-1.52587890625E-5" layoutX="112.0" layoutY="238.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <Button fx:id="btnLogIn" layoutX="84.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#btnLogInClicked" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #ADFF00; -fx-background-radius: 100;" text="&lt; Sign in &gt;">
+            <Button fx:id="btnSignIn" layoutX="84.0" layoutY="296.0" mnemonicParsing="false" onMouseClicked="#btnSignInClicked" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #ADFF00; -fx-background-radius: 100;" text="&lt; Sign in &gt;">
                <font>
                   <Font name="Segoe UI Black" size="12.0" />
                </font>
