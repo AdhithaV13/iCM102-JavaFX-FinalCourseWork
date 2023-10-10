@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainWindowController implements Initializable {
+public class MainWindowController {
 
     @FXML
     private Button btnClose;
@@ -49,10 +49,5 @@ public class MainWindowController implements Initializable {
         Stage stage = (Stage) mainWindowPane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/SignIn.fxml"))));
         stage.show();
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
     }
 }
