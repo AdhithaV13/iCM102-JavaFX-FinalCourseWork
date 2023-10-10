@@ -47,9 +47,9 @@ public class SignInController {
             Connection connection = DBConnection.getInstance().getConnection();
             String sql = "INSERT INTO sellers VALUES(?,?,?)";
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setString(1,txtUsername.getText());
-            pstm.setString(2,txtPassword.getText());
-            pstm.setString(3,txtEmail.getText());
+            pstm.setString(1,username);
+            pstm.setString(2,password);
+            pstm.setString(3,email);
 
             new Alert(Alert.AlertType.INFORMATION,"Successfully signed in..!").show();
         }else if(validationEmail == false){

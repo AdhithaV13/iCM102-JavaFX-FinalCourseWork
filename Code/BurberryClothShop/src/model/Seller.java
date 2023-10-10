@@ -1,9 +1,9 @@
 package model;
 
 public class Seller {
-    String username;
-    String password;
-    String email;
+    private String username;
+    private String password;
+    private String email;
 
     public Seller() {
     }
