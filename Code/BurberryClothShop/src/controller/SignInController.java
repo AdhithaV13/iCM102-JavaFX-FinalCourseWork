@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -8,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import javax.xml.soap.SOAPPart;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class SignInController {
 
@@ -30,7 +34,7 @@ public class SignInController {
     private TextField txtUsername;
 
     @FXML
-    void btnSignInClicked(MouseEvent event) {
+    void btnSignInClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String reEnteredPassword = txtRePassword.getText();
@@ -40,6 +44,13 @@ public class SignInController {
         boolean validationEmail = validationEmail(email);
 
         if(validationEmail == true && validationPassword == true){
+            Connection connection = DBConnection.getInstance().getConnection();
+            String sql = "INSERT INTO sellers VALUES(?,?,?)";
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1,txtUsername.getText());
+            pstm.setString(2,txtPassword.getText());
+            pstm.setString(3,txtEmail.getText());
+
             new Alert(Alert.AlertType.INFORMATION,"Successfully signed in..!").show();
         }else if(validationEmail == false){
             new Alert(Alert.AlertType.INFORMATION,"Enter valid email..!").show();
