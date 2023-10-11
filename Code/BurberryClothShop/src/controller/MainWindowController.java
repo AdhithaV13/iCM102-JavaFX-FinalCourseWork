@@ -45,6 +45,11 @@ public class MainWindowController {
     }
 
     @FXML
+    void txtForgottenClicked(MouseEvent event) {
+
+    }
+
+    @FXML
     void btnSignInClicked(MouseEvent event) throws IOException {
         Stage stage = (Stage) mainWindowPane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/SignIn.fxml"))));
