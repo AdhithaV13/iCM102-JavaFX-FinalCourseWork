@@ -50,6 +50,7 @@ public class SignInController {
             pstm.setString(1,username);
             pstm.setString(2,password);
             pstm.setString(3,email);
+            pstm.executeUpdate();
 
             new Alert(Alert.AlertType.INFORMATION,"Successfully signed in..!").show();
         }else if(validationEmail == false){
