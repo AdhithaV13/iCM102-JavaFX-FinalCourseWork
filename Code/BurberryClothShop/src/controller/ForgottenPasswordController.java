@@ -1,5 +1,6 @@
 package controller;
 
+import db.DBConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,6 +15,10 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Properties;
 
 public class ForgottenPasswordController {
@@ -38,46 +43,69 @@ public class ForgottenPasswordController {
     }
 
     @FXML
-    void btnSendClicked(MouseEvent event) throws MessagingException {
+    void btnSendClicked(MouseEvent event) throws MessagingException, SQLException, ClassNotFoundException {
         boolean validationEmail = validationEmail(txtEmail.getText());
 
-        if(validationEmail == true){
-            String sender = "adhithavichak@gmail.com";
-            String recipient = txtEmail.getText();
-            String password = "skdc wndx lkxw tyoa";
+        String email = txtEmail.getText();
 
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.port", "587");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.starttls.enable", "true");
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM sellers");
+        ResultSet resultSet = pstm.executeQuery();
+        for(int j = 0 ; ;j++) {
+            if (resultSet.next()) {
+                String email2 = resultSet.getString(3);
+                String password = resultSet.getString(2);
 
-            Session session = Session.getInstance(props,
-                    new javax.mail.Authenticator() {
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(sender, password);
+                int count = 0;
+
+                for (int i = 0; i < email2.length(); i++) {
+                    if (email.charAt(i) == email2.charAt(i)) {
+                        count++;
+                    }
+                }
+
+                if (count == email.length()) {
+                    if(validationEmail == true){
+                        String sender = "adhithavichak@gmail.com";
+                        String recipient = txtEmail.getText();
+                        String password2 = "skdc wndx lkxw tyoa";
+
+                        Properties props = new Properties();
+                        props.put("mail.smtp.host", "smtp.gmail.com");
+                        props.put("mail.smtp.port", "587");
+                        props.put("mail.smtp.auth", "true");
+                        props.put("mail.smtp.starttls.enable", "true");
+
+                        Session session = Session.getInstance(props,
+                                new javax.mail.Authenticator() {
+                                    protected PasswordAuthentication getPasswordAuthentication() {
+                                        return new PasswordAuthentication(sender, password2);
+                                    }
+                                });
+
+                        try {
+                            Message message = new MimeMessage(session);
+                            message.setFrom(new InternetAddress(sender));
+                            message.setRecipients(Message.RecipientType.TO,
+                                    InternetAddress.parse(recipient));
+                            message.setSubject("Burberry Cloth Shop");
+                            message.setText("Your password : "+password);
+                            Transport.send(message);
+
+                            new Alert(Alert.AlertType.INFORMATION, "Email sent successfully..!").show();
+                        } catch (MessagingException e) {
+                            new Alert(Alert.AlertType.INFORMATION, "Failed to send email. Error : "+e.getMessage()).show();
                         }
-                    });
-
-            try {
-                // Create a message
-                Message message = new MimeMessage(session);
-                message.setFrom(new InternetAddress(sender));
-                message.setRecipients(Message.RecipientType.TO,
-                        InternetAddress.parse(recipient));
-                message.setSubject("This this the Subject");
-                message.setText("Hi! I'm Adhitha Vithanage.");
-                Transport.send(message);
-
-                new Alert(Alert.AlertType.INFORMATION, "Email sent successfully..!").show();
-            } catch (MessagingException e) {
-                new Alert(Alert.AlertType.INFORMATION, "Failed to send email. Error : "+e.getMessage()).show();
-                System.out.println("Failed to send email. Error: " + e.getMessage());
+                    }else{
+                        new Alert(Alert.AlertType.INFORMATION,"Something went wrong...!").show();
+                    }
+                } else {
+                    new Alert(Alert.AlertType.INFORMATION, "Incorrect email..!").show();
+                }
+            }else{
+                break;
             }
-        }else{
-            new Alert(Alert.AlertType.INFORMATION,"Something went wrong...!").show();
         }
-
     }
 
     public boolean validationEmail(String email){
