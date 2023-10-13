@@ -39,32 +39,41 @@ public class ForgottenPasswordController {
 
     @FXML
     void btnSendClicked(MouseEvent event) throws MessagingException {
-        boolean validationEmial = validationEmail(txtEmail.getText());
+        boolean validationEmail = validationEmail(txtEmail.getText());
 
-        if(validationEmial == true){
-            Properties properties = new Properties();
-            properties.put("mail.smtp.auth",true);
-            properties.put("mail.smtp.hot","smtp.gmail.com");
-            properties.put("mail.smtp.port",587);
-            properties.put("mail.smtp.starttls.enable",true);
-            properties.put("mail.transport.protocl","smtp");
+        if(validationEmail == true){
+            String sender = "adhithavichak@gmail.com";
+            String recipient = txtEmail.getText();
+            String password = "skdc wndx lkxw tyoa";
 
-            Session session = Session.getInstance(properties, new Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("adhithavichak@gmail.com","12#Mmadhitha");
-                }
-            });
+            Properties props = new Properties();
+            props.put("mail.smtp.host", "smtp.gmail.com");
+            props.put("mail.smtp.port", "587");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
 
-            Message message = new MimeMessage(session);
-            message.setSubject("OTP of Burberry Cloth Shop");
-            message.setContent("<h1>Email from fullstack developer Adhitha Vithanage..</h1>","text/html");
+            Session session = Session.getInstance(props,
+                    new javax.mail.Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(sender, password);
+                        }
+                    });
 
-            Address addressTo = new InternetAddress(txtEmail.getText());
-            message.setRecipient(Message.RecipientType.TO,addressTo);
-            Transport.send(message);
+            try {
+                // Create a message
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(sender));
+                message.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(recipient));
+                message.setSubject("This this the Subject");
+                message.setText("Hi! I'm Adhitha Vithanage.");
+                Transport.send(message);
 
-            new Alert(Alert.AlertType.INFORMATION,"Email sent successfully...!").show();
+                new Alert(Alert.AlertType.INFORMATION, "Email sent successfully..!").show();
+            } catch (MessagingException e) {
+                new Alert(Alert.AlertType.INFORMATION, "Failed to send email. Error : "+e.getMessage()).show();
+                System.out.println("Failed to send email. Error: " + e.getMessage());
+            }
         }else{
             new Alert(Alert.AlertType.INFORMATION,"Something went wrong...!").show();
         }
