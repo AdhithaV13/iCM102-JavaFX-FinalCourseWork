@@ -58,12 +58,9 @@ public class MainWindowController {
                 String userName2 = resultSet.getString(1);
                 String password2 = resultSet.getString(2);
 
-                System.out.println(userName2);
-                System.out.println(password2);
-
                 int count = 0;
 
-                for (int i = 0; i < userName.length(); i++) {
+                for (int i = 0; i < userName.length()-1; i++) {
                     if (userName.charAt(i) == userName2.charAt(i)) {
                         count++;
                     }
@@ -72,7 +69,7 @@ public class MainWindowController {
                 if (count == userName.length() - 1) {
                     int count2 = 0;
 
-                    for (int i = 0; i < password.length(); i++) {
+                    for (int i = 0; i < password.length()-1; i++) {
                         if (password.charAt(i) == password2.charAt(i)) {
                             count2++;
                         }
@@ -81,12 +78,12 @@ public class MainWindowController {
                     if (count2 == password.length() - 1) {
                         new Alert(Alert.AlertType.INFORMATION, "Successfully loged in..!").show();
                         Stage stage = (Stage) mainWindowPane.getScene().getWindow();
-                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"))));
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"))));break;
                     } else {
-                        new Alert(Alert.AlertType.INFORMATION, "Incorrect password..!").show();
+                        new Alert(Alert.AlertType.INFORMATION, "Incorrect password..!").show();break;
                     }
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "Incorrect username..!").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Incorrect username..!").show();break;
                 }
             }else{
                 break;

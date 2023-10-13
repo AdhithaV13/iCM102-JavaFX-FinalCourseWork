@@ -92,15 +92,15 @@ public class ForgottenPasswordController {
                             message.setText("Your password : "+password);
                             Transport.send(message);
 
-                            new Alert(Alert.AlertType.INFORMATION, "Email sent successfully..!").show();
+                            new Alert(Alert.AlertType.INFORMATION, "Email sent successfully..!").show();break;
                         } catch (MessagingException e) {
-                            new Alert(Alert.AlertType.INFORMATION, "Failed to send email. Error : "+e.getMessage()).show();
+                            new Alert(Alert.AlertType.INFORMATION, "Failed to send email. Error : "+e.getMessage()).show();break;
                         }
                     }else{
-                        new Alert(Alert.AlertType.INFORMATION,"Something went wrong...!").show();
+                        new Alert(Alert.AlertType.INFORMATION,"Something went wrong...!").show();break;
                     }
                 } else {
-                    new Alert(Alert.AlertType.INFORMATION, "Incorrect email..!").show();
+                    new Alert(Alert.AlertType.INFORMATION, "Incorrect email..!").show();break;
                 }
             }else{
                 break;
