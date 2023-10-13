@@ -45,8 +45,10 @@ public class MainWindowController {
     }
 
     @FXML
-    void txtForgottenClicked(MouseEvent event) {
-
+    void txtForgottenClicked(MouseEvent event) throws IOException {
+        Stage stage = (Stage) mainWindowPane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ForgottenPassword.fxml"))));
+        stage.show();
     }
 
     @FXML
