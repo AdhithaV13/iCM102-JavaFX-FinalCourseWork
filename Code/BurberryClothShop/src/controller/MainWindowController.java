@@ -46,7 +46,7 @@ public class MainWindowController {
     }
 
     @FXML
-    void btnLogInClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+    void btnLogInClicked(MouseEvent event) throws SQLException, ClassNotFoundException, IOException {
         String userName = txtUsername.getText();
         String password = txtPassword.getText();
 
@@ -80,6 +80,8 @@ public class MainWindowController {
 
                     if (count2 == password.length() - 1) {
                         new Alert(Alert.AlertType.INFORMATION, "Successfully loged in..!").show();
+                        Stage stage = (Stage) mainWindowPane.getScene().getWindow();
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"))));
                     } else {
                         new Alert(Alert.AlertType.INFORMATION, "Incorrect password..!").show();
                     }
