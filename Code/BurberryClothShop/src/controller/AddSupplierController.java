@@ -39,7 +39,11 @@ public class AddSupplierController {
 
     @FXML
     void btnClearClicked(MouseEvent event) {
-
+        txtId.setText("");
+        txtName.setText("");
+        txtContact.setText("");
+        txtGender.setText("");
+        txtAddress.setText("");
     }
 
 }

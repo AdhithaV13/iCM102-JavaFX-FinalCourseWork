@@ -39,7 +39,11 @@ public class AddCustomerController {
 
     @FXML
     void btnClearClicked(MouseEvent event) {
-
+        txtId.setText("");
+        txtName.setText("");
+        txtAddress.setText("");
+        txtContact.setText("");
+        txtGender.setText("");
     }
 
 }

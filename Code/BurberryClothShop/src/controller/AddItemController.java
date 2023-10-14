@@ -39,7 +39,11 @@ public class AddItemController {
 
     @FXML
     void btnClearClicked(MouseEvent event) {
-
+        txtCode.setText("");
+        txtDescription.setText("");
+        txtPrice.setText("");
+        txtKind.setText("");
+        txtQty.setText("");
     }
 
 }

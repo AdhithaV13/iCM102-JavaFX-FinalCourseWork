@@ -46,7 +46,15 @@ public class PrintBillController {
 
     @FXML
     void btnClearClicked(MouseEvent event) {
-
+        txtBillId.setText("");
+        txtCustomerId.setText("");
+        txtCustomerName.setText("");
+        txtSupplierId.setText("");
+        txtSupplierName.setText("");
+        txtItemCodes.setText("");
+        txtItemPrices.setText("");
+        txtQty.setText("");
+        txtTotal.setText("");
     }
 
     @FXML
