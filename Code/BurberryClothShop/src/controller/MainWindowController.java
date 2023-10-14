@@ -1,6 +1,7 @@
 package controller;
 
 import db.DBConnection;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,7 +43,7 @@ public class MainWindowController {
 
     @FXML
     void btnCloseClicked(MouseEvent event) throws IOException {
-        mainWindowPane.setVisible(false);
+        Platform.exit();
     }
 
     @FXML
