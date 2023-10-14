@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="addSupplierPane" prefHeight="417.0" prefWidth="722.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddSupplierController">
    <children>
       <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="54.0" prefWidth="716.0" text="&quot;Burberry&quot; Cloth Shop - Add a Supplier">
@@ -18,17 +17,17 @@
       </Label>
       <Pane layoutX="118.0" layoutY="77.0" prefHeight="323.0" prefWidth="492.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="Customer id" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="14.0" text="Supplier id" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="75.0" text="Customer name" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="75.0" text="Supplier name" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="136.0" text="Customer contact number" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="136.0" text="Supplier contact number" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
@@ -61,7 +60,7 @@
                   <Font name="Segoe UI Black" size="12.0" />
                </font>
             </Button>
-            <Label layoutX="16.0" layoutY="197.0" text="Customer gender" textFill="WHITE">
+            <Label layoutX="16.0" layoutY="197.0" text="Supplier gender" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
