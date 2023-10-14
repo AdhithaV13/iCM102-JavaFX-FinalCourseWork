@@ -1,10 +1,16 @@
 package controller;
 
+import db.DBConnection;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class AddItemController {
 
@@ -33,8 +39,24 @@ public class AddItemController {
     private TextField txtQty;
 
     @FXML
-    void btnAddClicked(MouseEvent event) {
+    void btnAddClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+        String code = txtCode.getText();
+        String description = txtDescription.getText();
+        double unitPrice = Double.parseDouble(txtPrice.getText());
+        String kind = txtKind.getText();
+        int qty = Integer.parseInt(txtQty.getText());
 
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "INSERT INTO items VALUES(?,?,?,?,?)";
+        PreparedStatement pstm = connection.prepareStatement(sql);
+        pstm.setString(1,code);
+        pstm.setString(2,description);
+        pstm.setDouble(3,unitPrice);
+        pstm.setString(4,kind);
+        pstm.setInt(5,qty);
+        pstm.executeUpdate();
+
+        new Alert(Alert.AlertType.INFORMATION, "Item saved successfully..!").show();
     }
 
     @FXML
