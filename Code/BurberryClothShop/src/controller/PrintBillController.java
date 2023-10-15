@@ -173,4 +173,9 @@ public class PrintBillController {
 
         txtTotal.setText(""+total);
     }
+
+    public String[] getData(){
+        String[] data = {txtItemCodes.getText() , txtItemPrices.getText() , txtQty.getText() , txtTotal.getText()};
+        return data;
+    }
 }
