@@ -2,7 +2,9 @@ package controller;
 
 import db.DBConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -10,7 +12,9 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -70,7 +74,7 @@ public class PrintBillController {
     }
 
     @FXML
-    void btnPrintClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+    void btnPrintClicked(MouseEvent event) throws SQLException, ClassNotFoundException, IOException {
         String billId = txtBillId.getText();
         String customerId = txtCustomerId.getText();
         String customerName = txtCustomerName.getText();
@@ -96,6 +100,10 @@ public class PrintBillController {
         pstm.executeUpdate();
 
         new Alert(Alert.AlertType.INFORMATION, "Bill saved successfully..!").show();
+
+        Stage stage = (Stage)printBillPane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/PrintingBill.fxml"))));
+        stage.show();
     }
 
     public String generateCustomerName(String customerId) throws SQLException, ClassNotFoundException {
@@ -128,6 +136,21 @@ public class PrintBillController {
         return supplierName;
     }
 
+    public String generateItemPrices(String itemCode) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM items WHERE code=?");
+        pstm.setObject(1,itemCode);
+        ResultSet resultSet=pstm.executeQuery();
+
+        String itemPrice = "";
+
+        while(resultSet.next()){
+            itemPrice = ""+resultSet.getDouble(3);
+        }
+
+        return itemPrice;
+    }
+
     @FXML
     void txtCustomerNameClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
         txtCustomerName.setText(generateCustomerName(txtCustomerId.getText()));
@@ -137,5 +160,17 @@ public class PrintBillController {
     @FXML
     void txtSupplierNameClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
         txtSupplierName.setText(generateSupplierName((txtSupplierId.getText())));
+    }
+
+    @FXML
+    void txtItemPricesClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+        txtItemPrices.setText(generateItemPrices(txtItemCodes.getText()));
+    }
+
+    @FXML
+    void txtTotalClicked(MouseEvent event) {
+        double total = (Double.parseDouble(txtItemPrices.getText().toString()))*(Integer.parseInt(txtQty.getText().toString()));
+
+        txtTotal.setText(""+total);
     }
 }

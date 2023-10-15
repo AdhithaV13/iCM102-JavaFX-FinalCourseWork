@@ -88,7 +88,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtItemPrices" layoutX="12.0" layoutY="390.0" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtItemPrices" layoutX="12.0" layoutY="390.0" onMouseClicked="#txtItemPricesClicked" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -120,7 +120,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtTotal" layoutX="9.0" layoutY="493.0" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtTotal" layoutX="9.0" layoutY="493.0" onMouseClicked="#txtTotalClicked" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
