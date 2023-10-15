@@ -67,6 +67,7 @@ public class MainWindowController {
                     }
                 }
 
+
                 if (count == userName.length() - 1) {
                     int count2 = 0;
 
