@@ -8,7 +8,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="printBillPane" prefHeight="653.0" prefWidth="727.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrintBillController">
    <children>
       <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="54.0" prefWidth="716.0" text="&quot;Burberry&quot; Cloth Shop - Print a bill">
@@ -50,7 +49,7 @@
                </font>
             </TextField>
             <Line endX="362.800048828125" layoutX="113.0" layoutY="124.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
-            <TextField fx:id="txtCustomerName" layoutX="15.0" layoutY="157.0" prefHeight="27.0" prefWidth="463.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtCustomerName" layoutX="15.0" layoutY="157.0" onMouseClicked="#txtCustomerNameClicked" prefHeight="27.0" prefWidth="463.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -67,7 +66,7 @@
                   <Font name="Arial Rounded MT Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSupplierName" layoutX="7.0" layoutY="272.0" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
+            <TextField fx:id="txtSupplierName" layoutX="7.0" layoutY="272.0" onMouseClicked="#txtSupplierNameClicked" prefHeight="27.0" prefWidth="465.0" style="-fx-background-color: #12802e;">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>

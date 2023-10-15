@@ -2,16 +2,21 @@ package controller;
 
 import db.DBConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 public class PrintBillController {
 
@@ -93,12 +98,44 @@ public class PrintBillController {
         new Alert(Alert.AlertType.INFORMATION, "Bill saved successfully..!").show();
     }
 
-    public String generateCustomerName(){
-        return "Hello";
+    public String generateCustomerName(String customerId) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM customers WHERE id=?");
+        pstm.setObject(1,customerId);
+        ResultSet resultSet=pstm.executeQuery();
+
+        String customerName = "";
+
+        while(resultSet.next()){
+            customerName = resultSet.getString(2);
+        }
+
+        return customerName;
     }
 
-    public String generateSupplierName(){
-        return "Hello";
+    public String generateSupplierName(String supplierId) throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM suppliers WHERE id=?");
+        pstm.setObject(1,supplierId);
+        ResultSet resultSet=pstm.executeQuery();
+
+        String supplierName = "";
+
+        while(resultSet.next()){
+            supplierName = resultSet.getString(2);
+        }
+
+        return supplierName;
     }
 
+    @FXML
+    void txtCustomerNameClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+        txtCustomerName.setText(generateCustomerName(txtCustomerId.getText()));
+    }
+
+
+    @FXML
+    void txtSupplierNameClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+        txtSupplierName.setText(generateSupplierName((txtSupplierId.getText())));
+    }
 }
