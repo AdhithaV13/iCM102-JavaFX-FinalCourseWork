@@ -8,12 +8,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="addItemPane" prefHeight="481.0" prefWidth="727.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddItemController">
    <children>
-      <Label alignment="CENTER" layoutX="6.0" layoutY="14.0" prefHeight="54.0" prefWidth="716.0" text="&quot;Burberry&quot; Cloth Shop - Add an Item">
+      <Label alignment="CENTER" layoutX="108.0" layoutY="14.0" prefHeight="54.0" prefWidth="614.0" text="&quot;Burberry&quot; Cloth Shop - Add an Item">
          <font>
-            <Font name="Bauhaus 93" size="40.0" />
+            <Font name="Bauhaus 93" size="37.0" />
          </font>
       </Label>
       <Pane layoutX="123.0" layoutY="87.0" prefHeight="380.0" prefWidth="492.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
@@ -85,5 +84,10 @@
             </Button>
          </children>
       </Pane>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

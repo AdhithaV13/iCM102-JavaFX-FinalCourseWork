@@ -2,19 +2,17 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="homePagePane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <children>
-      <Label alignment="CENTER" layoutX="46.0" layoutY="14.0" prefHeight="42.0" prefWidth="573.0" text="&quot;Burberry&quot; Cloth Shop - Home Page">
+      <Label alignment="CENTER" layoutX="114.0" layoutY="17.0" prefHeight="42.0" prefWidth="491.0" text="&quot;Burberry&quot; Cloth Shop - Home Page">
          <font>
-            <Font name="Bauhaus 93" size="36.0" />
+            <Font name="Bauhaus 93" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="btnAddACustomer" layoutX="310.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#btnAddACustomerClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="Add a customer" textFill="WHITE">
+      <Button fx:id="btnAddACustomer" layoutX="303.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#btnAddACustomerClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="Add a customer" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
@@ -24,7 +22,7 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnAddAnItem" layoutX="310.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#btnAddAnItemClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="Add an item" textFill="WHITE">
+      <Button fx:id="btnAddAnItem" layoutX="303.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#btnAddAnItemClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="Add an item" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
@@ -34,15 +32,15 @@
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnViewDetails" layoutX="310.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#btnViewDetailsOnClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="View details" textFill="WHITE">
+      <Button fx:id="btnViewDetails" layoutX="303.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#btnViewDetailsOnClicked" prefHeight="42.0" prefWidth="296.0" style="-fx-background-radius: 30; -fx-background-color: #000AFF;" text="View details" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="15.0" />
          </font>
       </Button>
-      <ImageView fitHeight="42.0" fitWidth="68.0" layoutX="2.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Assets/back.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -2,13 +2,17 @@ package controller;
 
 import db.DBConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import javax.xml.soap.SOAPPart;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -34,7 +38,10 @@ public class SignInController {
     private TextField txtUsername;
 
     @FXML
-    void btnSignInClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+    private Button btnBack;
+
+    @FXML
+    void btnSignInClicked(MouseEvent event) throws SQLException, ClassNotFoundException, IOException {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String reEnteredPassword = txtRePassword.getText();
@@ -53,6 +60,9 @@ public class SignInController {
             pstm.executeUpdate();
 
             new Alert(Alert.AlertType.INFORMATION,"Successfully signed in..!").show();
+
+            Stage stage = (Stage) signInPanel.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/MainWindow.fxml"))));
         }else if(validationEmail == false){
             new Alert(Alert.AlertType.INFORMATION,"Enter valid email..!").show();
         } else if (validationPassword == false) {
@@ -97,5 +107,12 @@ public class SignInController {
         }else{
             return false;
         }
+    }
+
+    @FXML
+    void btnBackClicked(MouseEvent event) throws IOException {
+        Stage stage = (Stage) signInPanel.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/MainWindow.fxml"))));
+        stage.show();
     }
 }

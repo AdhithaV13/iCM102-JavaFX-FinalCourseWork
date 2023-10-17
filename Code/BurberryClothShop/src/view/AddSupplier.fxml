@@ -10,9 +10,9 @@
 
 <AnchorPane fx:id="addSupplierPane" prefHeight="417.0" prefWidth="722.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddSupplierController">
    <children>
-      <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="54.0" prefWidth="716.0" text="&quot;Burberry&quot; Cloth Shop - Add a Supplier">
+      <Label alignment="CENTER" layoutX="101.0" layoutY="14.0" prefHeight="54.0" prefWidth="618.0" text="&quot;Burberry&quot; Cloth Shop - Add a Supplier">
          <font>
-            <Font name="Bauhaus 93" size="40.0" />
+            <Font name="Bauhaus 93" size="35.0" />
          </font>
       </Label>
       <Pane layoutX="118.0" layoutY="77.0" prefHeight="323.0" prefWidth="492.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
@@ -78,5 +78,10 @@
             </Button>
          </children>
       </Pane>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

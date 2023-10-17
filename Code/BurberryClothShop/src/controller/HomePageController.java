@@ -31,6 +31,9 @@ public class HomePageController {
     private AnchorPane homePagePane;
 
     @FXML
+    private Button btnBack;
+
+    @FXML
     void btnAddACustomerClicked(MouseEvent event) throws IOException {
         Stage stage = (Stage) homePagePane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/AddCustomer.fxml"))));
@@ -62,6 +65,13 @@ public class HomePageController {
     void btnViewDetailsOnClicked(MouseEvent event) throws IOException {
         Stage stage = (Stage) homePagePane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ViewDetails.fxml"))));
+        stage.show();
+    }
+
+    @FXML
+    void btnBackClicked(MouseEvent event) throws IOException {
+        Stage stage = (Stage) homePagePane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/MainWindow.fxml"))));
         stage.show();
     }
 

@@ -2,12 +2,17 @@ package controller;
 
 import db.DBConnection;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import sun.awt.ScrollPaneWheelScroller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -37,6 +42,9 @@ public class AddCustomerController {
 
     @FXML
     private TextField txtName;
+
+    @FXML
+    private Button btnBack;
 
     @FXML
     void btnAddClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
@@ -76,4 +84,10 @@ public class AddCustomerController {
         txtGender.setText("");
     }
 
+    @FXML
+    void btnBackClicked(MouseEvent event) throws IOException {
+        Stage stage = (Stage) addCustomerPane.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/HomePage.fxml"))));
+        stage.show();
+    }
 }
