@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import jdk.nashorn.internal.ir.SplitReturn;
 
 import java.io.IOException;
 import java.net.URL;
@@ -88,33 +89,48 @@ public class PrintBillController {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "INSERT INTO bills VALUES(?,?,?,?,?,?,?,?,?)";
         PreparedStatement pstm = connection.prepareStatement(sql);
-        pstm.setString(1,billId);
-        pstm.setString(2,customerId);
-        pstm.setString(3,customerName);
-        pstm.setString(4,supplierId);
-        pstm.setString(5,supplierName);
-        pstm.setString(6,itemCodes);
-        pstm.setDouble(7,itemPrices);
-        pstm.setInt(8,qty);
-        pstm.setDouble(9,total);
+        pstm.setString(1, billId);
+        pstm.setString(2, customerId);
+        pstm.setString(3, customerName);
+        pstm.setString(4, supplierId);
+        pstm.setString(5, supplierName);
+        pstm.setString(6, itemCodes);
+        pstm.setDouble(7, itemPrices);
+        pstm.setInt(8, qty);
+        pstm.setDouble(9, total);
         pstm.executeUpdate();
 
         new Alert(Alert.AlertType.INFORMATION, "Bill saved successfully..!").show();
 
-        Stage stage = (Stage)printBillPane.getScene().getWindow();
+        PreparedStatement pstm2 = connection.prepareStatement("SELECT * FROM items WHERE code=?");
+        pstm2.setString(1,itemCodes);
+        ResultSet resultSet = pstm2.executeQuery();
+
+        int addedQty = 0;
+
+        while(resultSet.next()) {
+            addedQty = resultSet.getInt(5);
+        }
+
+        PreparedStatement pstm3 = connection.prepareStatement("UPDATE items set qty=? where code=?");
+        pstm3.setInt(1,(addedQty-qty));
+        pstm3.setString(2,itemCodes);
+        pstm3.executeUpdate();
+
+        Stage stage = (Stage) printBillPane.getScene().getWindow();
         stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/PrintingBill.fxml"))));
         stage.show();
     }
 
     public String generateCustomerName(String customerId) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM customers WHERE id=?");
-        pstm.setObject(1,customerId);
-        ResultSet resultSet=pstm.executeQuery();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM customers WHERE id=?");
+        pstm.setObject(1, customerId);
+        ResultSet resultSet = pstm.executeQuery();
 
         String customerName = "";
 
-        while(resultSet.next()){
+        while (resultSet.next()) {
             customerName = resultSet.getString(2);
         }
 
@@ -123,13 +139,13 @@ public class PrintBillController {
 
     public String generateSupplierName(String supplierId) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM suppliers WHERE id=?");
-        pstm.setObject(1,supplierId);
-        ResultSet resultSet=pstm.executeQuery();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM suppliers WHERE id=?");
+        pstm.setObject(1, supplierId);
+        ResultSet resultSet = pstm.executeQuery();
 
         String supplierName = "";
 
-        while(resultSet.next()){
+        while (resultSet.next()) {
             supplierName = resultSet.getString(2);
         }
 
@@ -138,14 +154,14 @@ public class PrintBillController {
 
     public String generateItemPrices(String itemCode) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
-        PreparedStatement pstm=connection.prepareStatement("SELECT * FROM items WHERE code=?");
-        pstm.setObject(1,itemCode);
-        ResultSet resultSet=pstm.executeQuery();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM items WHERE code=?");
+        pstm.setObject(1, itemCode);
+        ResultSet resultSet = pstm.executeQuery();
 
         String itemPrice = "";
 
-        while(resultSet.next()){
-            itemPrice = ""+resultSet.getDouble(3);
+        while (resultSet.next()) {
+            itemPrice = "" + resultSet.getDouble(3);
         }
 
         return itemPrice;
@@ -169,13 +185,8 @@ public class PrintBillController {
 
     @FXML
     void txtTotalClicked(MouseEvent event) {
-        double total = (Double.parseDouble(txtItemPrices.getText().toString()))*(Integer.parseInt(txtQty.getText().toString()));
+        double total = (Double.parseDouble(txtItemPrices.getText().toString())) * (Integer.parseInt(txtQty.getText().toString()));
 
-        txtTotal.setText(""+total);
-    }
-
-    public String[] getData(){
-        String[] data = {txtItemCodes.getText() , txtItemPrices.getText() , txtQty.getText() , txtTotal.getText()};
-        return data;
+        txtTotal.setText("" + total);
     }
 }

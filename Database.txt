@@ -1,3 +1,38 @@
 use javafx;
-create table customers;
-create table 
+create table sellers(
+	username varchar(30),
+	password varchar(30),
+	email varchar(30)
+	);
+create table customers(
+	id varchar(6),
+	name varchar(30),
+	address varchar(30),
+	contact varchar(30),
+	gender varchar(30)
+	);
+create table suppliers(
+	id varchar(6),
+	name varchar(30),
+	contact varchar(30),
+	gender varchar(30)
+	);
+create table items(
+	code varchar(6),
+	description varchar(30),
+	unitPrice decimal(10,2),
+	kind varchar(20),
+	qty int
+	);
+
+create table bills(
+	billId varchar(6),
+	customerId varchar(6),
+	customerName varchar(30),
+	supplierId varchar(6),
+	supplierName varchar(30),
+	itemCodes varchar(30),
+	itemPrices varchar(30),
+	qty int,
+	total double(10,2)
+	);
