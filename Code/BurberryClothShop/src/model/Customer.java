@@ -3,7 +3,7 @@ package model;
 public class Customer {
     private String id;
     private String name;
-    private String contactNumber;
+    private String contact;
     private String address;
     private String gender;
 
@@ -13,9 +13,17 @@ public class Customer {
     public Customer(String id, String name, String contactNumber, String address, String gender) {
         this.id = id;
         this.name = name;
-        this.contactNumber = contactNumber;
+        this.contact = contactNumber;
         this.address = address;
         this.gender = gender;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getId() {
@@ -34,13 +42,6 @@ public class Customer {
         this.name = name;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
 
     public String getAddress() {
         return address;

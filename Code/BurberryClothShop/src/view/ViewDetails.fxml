@@ -9,63 +9,80 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="viewDetailsPane" prefHeight="429.0" prefWidth="1118.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewDetailsController">
+<AnchorPane fx:id="viewDetailsPane" prefHeight="480.0" prefWidth="1123.0" style="-fx-background-color: #0DFF00;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewDetailsController">
    <children>
-      <Label alignment="CENTER" layoutX="275.0" layoutY="14.0" prefHeight="54.0" prefWidth="636.0" text="&quot;Burberry&quot; Cloth Shop - View Details">
+      <Label alignment="CENTER" layoutX="366.0" layoutY="14.0" prefHeight="42.0" prefWidth="491.0" text="&quot;Burberry&quot; Cloth Shop - Home Page">
          <font>
-            <Font name="Bauhaus 93" size="34.0" />
+            <Font name="Bauhaus 93" size="31.0" />
          </font>
       </Label>
-      <Button fx:id="btnBack" layoutX="207.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
+      <Button fx:id="btnBack" layoutX="266.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Pane layoutX="253.0" layoutY="89.0" prefHeight="320.0" prefWidth="840.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
+      <Pane layoutX="284.0" layoutY="91.0" prefHeight="376.0" prefWidth="826.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <TreeTableView fx:id="table" layoutX="15.0" layoutY="16.0" prefHeight="289.0" prefWidth="811.0" style="-fx-background-radius: 30;">
+            <TreeTableView fx:id="table" layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="795.0">
               <columns>
-                <TreeTableColumn fx:id="rowId" prefWidth="130.39996337890625" text="Id" />
-                <TreeTableColumn fx:id="rowName" prefWidth="212.00003051757812" text="Name" />
-                  <TreeTableColumn fx:id="rowAddress" prefWidth="148.0" text="Address" />
-                  <TreeTableColumn fx:id="rowContact" prefWidth="200.0" text="Contact" />
-                  <TreeTableColumn fx:id="rowGender" prefWidth="122.39984130859375" text="Gender" />
+                <TreeTableColumn fx:id="rowId" prefWidth="96.0" text="Id" />
+                <TreeTableColumn fx:id="rowName" prefWidth="252.79998779296875" text="Name" />
+                  <TreeTableColumn fx:id="rowAddress" prefWidth="128.0" text="Address" />
+                  <TreeTableColumn fx:id="rowContact" prefWidth="196.800048828125" text="Contact" />
+                  <TreeTableColumn fx:id="rowGender" prefWidth="120.800048828125" text="Gender" />
               </columns>
+            </TreeTableView>
+            <TreeTableView fx:id="table1" layoutX="14.0" layoutY="15.0" prefHeight="347.0" prefWidth="795.0">
+               <columns>
+                  <TreeTableColumn fx:id="rowId1" prefWidth="96.0" text="Id" />
+                  <TreeTableColumn fx:id="rowName1" prefWidth="315.99993896484375" text="Name" />
+                  <TreeTableColumn fx:id="rowContact1" prefWidth="217.60009765625" text="Contact" />
+                  <TreeTableColumn fx:id="rowGender1" prefWidth="164.79998779296875" text="Gender" />
+               </columns>
+            </TreeTableView>
+            <TreeTableView fx:id="table2" layoutX="14.0" layoutY="14.0" prefHeight="347.0" prefWidth="795.0">
+               <columns>
+                  <TreeTableColumn fx:id="rowCode" prefWidth="96.0" text="Code" />
+                  <TreeTableColumn fx:id="rowDescription" prefWidth="252.79998779296875" text="Desciption" />
+                  <TreeTableColumn fx:id="rowUnitPrice" prefWidth="128.0" text="Unit price" />
+                  <TreeTableColumn fx:id="rowKind" prefWidth="196.800048828125" text="Kind" />
+                  <TreeTableColumn fx:id="rowQty" prefWidth="120.800048828125" text="Qty" />
+               </columns>
             </TreeTableView>
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="89.0" onMouseClicked="#btnCustomersClicked" prefHeight="74.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
+      <Pane layoutX="14.0" layoutY="91.0" onMouseClicked="#btnCustomersClicked" prefHeight="86.0" prefWidth="255.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <Label layoutX="54.0" layoutY="19.0" text="Customers" textFill="WHITE">
+            <Label layoutX="53.0" layoutY="21.0" text="Customers" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="171.0" onMouseClicked="#btnSuppiersClicked" prefHeight="74.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
+      <Pane layoutX="17.0" layoutY="187.0" onMouseClicked="#btnSuppliersClicked" prefHeight="86.0" prefWidth="255.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <Label layoutX="62.0" layoutY="19.0" text="Suppliers" textFill="WHITE">
+            <Label layoutX="62.0" layoutY="21.0" text="Suppliers" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="14.0" layoutY="252.0" onMouseClicked="#btnItemsClicked" prefHeight="74.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
+      <Pane layoutX="14.0" layoutY="284.0" onMouseClicked="#btnItemsClicked" prefHeight="86.0" prefWidth="255.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <Label layoutX="84.0" layoutY="19.0" text="Items" textFill="WHITE">
+            <Label layoutX="88.0" layoutY="21.0" text="Items" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="12.0" layoutY="333.0" onMouseClicked="#btnChartClicked" prefHeight="74.0" prefWidth="233.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
+      <Pane layoutX="14.0" layoutY="381.0" onMouseClicked="#btnChartClicked" prefHeight="86.0" prefWidth="255.0" style="-fx-background-radius: 30; -fx-background-color: #12802e;">
          <children>
-            <Label layoutX="27.0" layoutY="19.0" text="Chart of selling" textFill="WHITE">
+            <Label layoutX="20.0" layoutY="21.0" text="Chart of selling" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
          </children>

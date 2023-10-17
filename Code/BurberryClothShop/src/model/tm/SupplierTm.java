@@ -1,31 +1,20 @@
 package model.tm;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import model.Customer;
 
-public class CustomerTm extends RecursiveTreeObject<CustomerTm> {
+public class SupplierTm extends RecursiveTreeObject<SupplierTm> {
     String id;
     String name;
     String contact;
-    String address;
     String gender;
 
-    public String getContact() {
-        return contact;
+    public SupplierTm() {
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
-
-    public CustomerTm() {
-    }
-
-    public CustomerTm(String id, String name, String contactNumber, String address, String gender) {
+    public SupplierTm(String id, String name, String contact, String gender) {
         this.id = id;
         this.name = name;
-        this.contact = contactNumber;
-        this.address = address;
+        this.contact = contact;
         this.gender = gender;
     }
 
@@ -45,12 +34,12 @@ public class CustomerTm extends RecursiveTreeObject<CustomerTm> {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getContact() {
+        return contact;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getGender() {

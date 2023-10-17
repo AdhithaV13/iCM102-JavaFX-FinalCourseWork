@@ -3,8 +3,16 @@ package model;
 public class Supplier {
     private String id;
     private String name;
-    private String contactNumber;
+    private String contact;
     private String gender;
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
     public Supplier() {
     }
@@ -12,7 +20,7 @@ public class Supplier {
     public Supplier(String id, String name, String contactNumber, String gender) {
         this.id = id;
         this.name = name;
-        this.contactNumber = contactNumber;
+        this.contact = contactNumber;
         this.gender = gender;
     }
 
@@ -30,14 +38,6 @@ public class Supplier {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
     }
 
     public String getGender() {
