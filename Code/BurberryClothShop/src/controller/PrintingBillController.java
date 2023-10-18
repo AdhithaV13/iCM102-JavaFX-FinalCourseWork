@@ -14,6 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -100,8 +104,11 @@ public class PrintingBillController implements Initializable {
     }
 
     @FXML
-    void btnPrintClicked(MouseEvent event) {
-
+    void btnPrintClicked(MouseEvent event) throws JRException, SQLException, ClassNotFoundException {
+        JasperDesign design = JRXmlLoader.load("reports/Bill.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(design);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+        JasperViewer.viewReport(jasperPrint,false);
     }
 
 }
