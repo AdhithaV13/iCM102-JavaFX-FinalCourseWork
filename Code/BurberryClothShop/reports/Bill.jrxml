@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Bill" pageWidth="298" pageHeight="500" columnWidth="258" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f356c2cd-2789-456f-b82f-106268432a62">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM bills ORDER BY billId DESC LIMIT 1]]>
+	</queryString>
+	<field name="itemCodes" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="itemCodes"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bills"/>
+	</field>
+	<field name="itemPrices" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="itemPrices"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bills"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bills"/>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.label" value="total"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bills"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<image>
+				<reportElement x="-10" y="-20" width="70" height="70" uuid="1cefab49-0796-4902-bd24-9a4274381f8f"/>
+				<imageExpression><![CDATA["C:/Users/adhit/Downloads/BBCS (1).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="50" y="-10" width="208" height="40" forecolor="#2F00FF" uuid="096d2cfb-9541-4dae-b0af-e0753c7c4801"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Bauhaus 93" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Burberry Cloth Shop]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="168" height="18" uuid="59738bf0-f096-4eed-b0f5-48a194cb7dae"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Owner : Mr. Suranga Vithanage]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="190" y="40" width="88" height="18" uuid="fd30114a-c2d4-4b32-8a5a-de7547c63f70"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="58" width="298" height="1" uuid="f508c93a-78ad-4ec4-86e6-b727d536ece4"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="31" width="80" height="20" uuid="60cbbaf9-2179-4413-9029-8fc83a262511"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{itemCodes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="31" width="100" height="20" uuid="0a9329a8-8791-48b7-93ec-88851fbd7eb8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{itemPrices}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="31" width="78" height="20" uuid="798ae092-ad8a-4576-b770-2c5283d7308c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="63" width="298" height="1" uuid="b5f81340-8cd6-4100-b1cb-9ea8968b9a0d"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="10" width="80" height="21" uuid="d5f380ed-43a8-40bb-8905-433a4b4378e6"/>
+				<textElement textAlignment="Center">
+					<font fontName="Matura MT Script Capitals" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Item Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="10" width="100" height="21" uuid="670de3f6-9827-44ae-80f6-a6d7b6ad6251"/>
+				<textElement textAlignment="Center">
+					<font fontName="Matura MT Script Capitals" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Item Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="10" width="78" height="21" uuid="11e6719a-e215-4b80-b68a-affabf83c2ab"/>
+				<textElement textAlignment="Center">
+					<font fontName="Matura MT Script Capitals" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="100" height="20" uuid="8fcec215-ef0d-4b55-9f58-664b62380bdd"/>
+				<textElement>
+					<font fontName="Matura MT Script Capitals" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="44b26b4d-4f1d-48b9-bcdf-52e1f4920ae4"/>
+				<textElement>
+					<font fontName="Matura MT Script Capitals" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="100" height="20" uuid="5e19c457-eb52-4a1d-ba78-3d465be85273"/>
+				<textElement>
+					<font fontName="Matura MT Script Capitals" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Final Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="10" width="58" height="20" uuid="e743dd96-d90e-41f6-8bd7-4a2e4bc2e349"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="188" y="10" width="12" height="20" uuid="0de6f336-73d3-4b01-88b9-bd46becae28e"/>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="30" width="70" height="20" uuid="040a7a27-bf34-4d96-923e-16fb388cfbe5"/>
+				<text><![CDATA[=  20%]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="50" width="58" height="30" uuid="c15014dc-fe8b-4ea4-a28e-743a0e236a43"/>
+				<textFieldExpression><![CDATA[$F{total}-(($F{total}/100)*20)]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="188" y="50" width="12" height="20" uuid="a46a2ac7-41ef-4544-8bf7-143144c9a6ca"/>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="90" width="128" height="30" forecolor="#FF0400" uuid="c4106c99-8fca-4fa5-863b-e9fab1ec4dca"/>
+				<textElement textAlignment="Center">
+					<font fontName="Rage Italic" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thank You ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-19" y="119" width="298" height="1" uuid="8d6d68ed-c136-4f74-b5b8-b9feed69cefa"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="203" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="100" height="14" uuid="0234009b-5a53-498f-a4e3-768312aec186"/>
+				<textElement>
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[About us]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="30" width="250" height="14" uuid="908c047b-c849-40ea-b59d-97729584064e"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Type		: Private Limited Company]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="44" width="250" height="14" uuid="0d6db203-29c1-4338-ac4e-bd32ec941be5"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Industry		: Fashion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="58" width="250" height="14" uuid="9db320e2-bc43-41b4-ad5a-e0e10dff311a"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Owner		: Mr.Suranga Vithanage]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="72" width="250" height="14" uuid="f9b0406e-53c5-431b-badc-891b91c6f4f0"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Head Office	: Colombo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="86" width="250" height="14" uuid="4e5e37f3-ab43-4649-be27-f0283421bbd2"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Area Served	: Sri Lanka]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="100" width="250" height="14" uuid="458e65bd-bcd0-4284-8dba-e82be6791c33"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Products	: Clothes for kids]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="114" width="170" height="14" uuid="38275c72-4d70-4910-892c-943becdb559c"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[: Clothes for male]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="128" width="170" height="14" uuid="7b0c1126-830c-443b-bf91-37cfcd8d8837"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[: Clothes for female]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="142" width="250" height="14" uuid="ef0c0089-51e3-4f7e-89cf-366ad1073dc5"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Websites	: burberry.lk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="156" width="170" height="14" uuid="058d5169-fcee-4d88-91ad-0336a6664c91"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[: lankanBurberry.lk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="170" width="250" height="14" uuid="9d5d64ad-3197-4252-8e0b-d15a13cc3e52"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Contacts	: 071 423 0846]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="184" width="170" height="14" uuid="1f1865bf-3279-45a1-bfd3-ae09a4f17a93"/>
+				<textElement>
+					<font isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[: 076 169 9900]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
