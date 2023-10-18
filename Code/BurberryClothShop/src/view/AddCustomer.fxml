@@ -84,7 +84,7 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="btnBack" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Button" textFill="#00ff04">
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnBackClicked" prefHeight="30.0" prefWidth="91.0" style="-fx-background-color: #ff1100;" text="Back" textFill="#00ff04">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

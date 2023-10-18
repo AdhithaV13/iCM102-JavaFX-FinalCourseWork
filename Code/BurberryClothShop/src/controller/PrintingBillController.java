@@ -40,6 +40,9 @@ public class PrintingBillController implements Initializable {
     private Label txtDate;
 
     @FXML
+    private Button btnPrint;
+
+    @FXML
     private Label txtFinal;
 
     @FXML
@@ -95,4 +98,10 @@ public class PrintingBillController implements Initializable {
             txtFinal.setText("= "+(total-((total/100)*20)));
         }
     }
+
+    @FXML
+    void btnPrintClicked(MouseEvent event) {
+
+    }
+
 }

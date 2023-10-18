@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -94,6 +95,9 @@ public class ViewDetailsController implements Initializable {
     @FXML
     private TreeTableView<ItemTm> table2;
 
+    @FXML
+    private PieChart pie_chart;
+
     List<Customer> list = new ArrayList<>();
     List<Supplier> list1 = new ArrayList<>();
     List<Item> list2 = new ArrayList<>();
@@ -106,8 +110,8 @@ public class ViewDetailsController implements Initializable {
     }
 
     @FXML
-    void btnChartClicked(MouseEvent event) {
-
+    void btnChartClicked(MouseEvent event) throws SQLException, ClassNotFoundException {
+        loadChart();
     }
 
     @FXML
@@ -147,11 +151,13 @@ public class ViewDetailsController implements Initializable {
         table.setVisible(false);
         table1.setVisible(false);
         table2.setVisible(false);
+        pie_chart.setVisible(false);
     }
 
     public void loadTable() throws SQLException, ClassNotFoundException {
         table1.setVisible(false);
         table2.setVisible(false);
+        pie_chart.setVisible(false);
 
             ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
 
@@ -189,6 +195,7 @@ public class ViewDetailsController implements Initializable {
     public void loadTable1() throws SQLException, ClassNotFoundException {
         table.setVisible(false);
         table2.setVisible(false);
+        pie_chart.setVisible(false);
 
         ObservableList<SupplierTm> tmList= FXCollections.observableArrayList();
 
@@ -224,6 +231,7 @@ public class ViewDetailsController implements Initializable {
     public void loadTable2() throws SQLException, ClassNotFoundException {
         table.setVisible(false);
         table1.setVisible(false);
+        pie_chart.setVisible(false);
 
         ObservableList<ItemTm> tmList= FXCollections.observableArrayList();
 
@@ -256,5 +264,48 @@ public class ViewDetailsController implements Initializable {
 
             table2.setVisible(true);
         }
+    }
+
+    public void loadChart() throws SQLException, ClassNotFoundException {
+        table.setVisible(false);
+        table1.setVisible(false);
+        table2.setVisible(false);
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM bills");
+        ResultSet resultSet = pstm.executeQuery();
+
+        int kids = 0;
+        int male = 0;
+        int female = 0;
+
+        while(resultSet.next()){
+            String code = resultSet.getString(6);
+
+            PreparedStatement pstm1 = connection.prepareStatement("SELECT * FROM items WHERE code=?");
+            pstm1.setString(1,code);
+            ResultSet resultSet1 = pstm1.executeQuery();
+
+            while(resultSet1.next()){
+                String kind = resultSet1.getString(4);
+
+                switch(kind){
+                    case "Kids" : kids++;break;
+                    case "Male" : male++;break;
+                    case "Female" : female++;
+                }
+            }
+        }
+
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Kids",kids),
+                        new PieChart.Data("Male",male),
+                        new PieChart.Data("Female",female));
+
+        pie_chart.setData(pieChartData);
+        pie_chart.setTitle("Sales Percentage Types");
+
+        pie_chart.setVisible(true);
     }
 }
